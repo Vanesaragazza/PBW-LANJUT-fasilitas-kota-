@@ -9,6 +9,7 @@
                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                 <a class="nav-link" href="{{ route('profil') }}">Profil</a>
                 <a class="nav-link" href="{{ route('reports.index') }}">Laporan</a>
+                <a class="nav-link" href="{{ route('categories.index') }}">Kategori</a>
             </div>
         </div>
     </div>
