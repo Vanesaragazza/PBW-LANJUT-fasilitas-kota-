@@ -12,6 +12,16 @@ class CategoryController extends Controller
     // Tulis method-method ini DI DALAM CLASS
     // ==========================================
 
+//  method show() untuk menampilkan detail satu record kategori
+    public function show(string $category)
+{
+    $item = Category::findOrFail($category);
+
+    return view('categories.show', [
+        'category' => $item,
+    ]);
+}
+
     // Method untuk menampilkan daftar kategori (Read)
     public function index()
     {
@@ -36,4 +46,38 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index');
     }
+
+    //  method edit() untuk memuat data lama ke dalam form:
+
+    public function edit(string $category)
+{
+    $item = Category::findOrFail($category);
+
+    return view('categories.edit', [
+        'category' => $item,
+    ]);
+}
+
+// method update() untuk memproses perubahan data
+public function update(Request $request, string $category)
+{
+    $item = Category::findOrFail($category);
+
+    $item->update([
+        'name' => $request->name,
+        'description' => $request->description,
+    ]);
+
+    return redirect()->route('categories.index');
+}
+
+// Methode destroy() untuk menghapus data kategori
+public function destroy(string $category)
+{
+    $item = Category::findOrFail($category);
+    $item->delete();
+
+    return redirect()->route('categories.index');
+}
+
 }

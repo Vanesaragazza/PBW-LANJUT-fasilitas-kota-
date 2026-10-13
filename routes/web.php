@@ -29,6 +29,7 @@ Route::get('/praktikum', function () {
 Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
 Route::get('/reports/{id}', [ReportController::class, 'show'])->name('reports.show');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+// Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+// Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::resource('categories', CategoryController::class);
